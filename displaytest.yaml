@@ -1,0 +1,41 @@
+esphome:
+  name: displaytest
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: ""
+  password: ""
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Displaytest Fallback Hotspot"
+    password: "Fq2j6ufpcGBC"
+
+captive_portal:
+
+spi:
+  clk_pin: D5
+  mosi_pin: D7
+
+display:
+  - platform: waveshare_epaper
+    cs_pin: D1
+    dc_pin: D3
+    busy_pin: D2
+    reset_pin: D4
+    model: 2.13in-t5d
+    full_update_every: 30
+    lambda: |-
+      it.line(0, 0, 50, 50);
